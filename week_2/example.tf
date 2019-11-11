@@ -8,17 +8,7 @@ resource "aws_instance" "example" {
   security_groups = [aws_security_group.ingress-all-test.id]
   key_name        = var.key_name
   subnet_id       = aws_subnet.subnet-uno.id
-  user_data       = <<-EOF
-    #!/usr/bin/env bash
-    echo "Installing java ..."
-    sudo add-apt-repository ppa:openjdk-r/ppa
-    sudo apt-get update
-    sudo apt-get -y install openjdk-8-jdk
-    echo "Downloading application ..."
-    curl -O -L "https://github.com/Thoughtworks-SEA-Capability/Infrastructure-101-Pathway/raw/master/week1/hello-spring-boot-0.1.0.jar"
-    echo "Starting application ..."
-    java -jar hello-spring-boot-0.1.0.jar
-    EOF
+  user_data = "${file("bootstrap.sh")}"
 }
 
 resource "aws_key_pair" "deployer" {
