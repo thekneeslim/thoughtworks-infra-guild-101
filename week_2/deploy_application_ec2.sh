@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 printf "\n\360\237\221\273\t Initializing Terraform working directory ...\n"
 terraform init
 
@@ -23,4 +25,4 @@ Your EC2 instnace is currently installing java and various dependencies. To view
 After your instance has been provisioned with dependencies installed, you will be able to hit the application on http://${PUBLIC_IP}:8080
 EOF
 
-printf "\n\360\237\221\273\t Happy learning!!! "
+printf "\n\360\237\221\273\t Happy learning!!!\n"
