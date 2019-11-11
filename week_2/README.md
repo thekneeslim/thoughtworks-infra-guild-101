@@ -53,3 +53,11 @@ terraform apply -var "public_key=`cat id_rsa.pub`"
     java -jar hello-spring-boot-0.1.0.jar
     EOF
   ```
+
+3) Unable to SSH into the box because of "SSH Too Many Authentication Failures” Error
+
+  Add the following parameter `-o IdentitiesOnly=yes` into the ssh script:-
+
+  ```
+  ssh -i id_rsa ubuntu@ip.address -o IdentitiesOnly=yes
+  ```
